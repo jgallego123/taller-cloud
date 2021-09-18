@@ -1,0 +1,223 @@
+Se tienen 4 microservicios para para un gestor de películas:
+-> Users
+-> Movies
+-> Showtimes (Horarios películas)
+-> Bookings (Reservas) -> Utilizar el patrón circuit breaker
+
+1. Creamos el nuevo proyecyo (Gradle, 1.8V, Java): services_movies
+
+** Users **
+
+2. Crear en start.spring.io.
+   Group: co.com.cloud.user
+   Artefacto: user
+   Type: Gradle
+   Lenguaje: Java
+   Package: Jar
+   Version: 8
+   Dependencias: Spring Boot 2.4.9
+                 -Spring Boot DevTools
+                 -Lombok
+                 -Spring Web
+                 -Spring Data JPA
+                 -H2 Database
+
+    Descomprimirlo y guardarlo donde se genero el proyecto: services_movies/service-user/user 
+
+3. Limpieza de archivos
+
+4. Modificar el build.gradle de multiproject_backend y el del service-user
+
+5. Crear el services_movies/gradle.properties
+
+6. Compilarlos y mirar que no hayan errores
+
+7. Configurar services_movies/settings.gradle  y compilarlo
+
+8. Crear en services_movies/lombok.config
+
+9. Crear paquete: service-user/./././co.com.cloud.movies.serviceuser/entities
+
+10. Crear paquete: service-user/./././co.com.cloud.movies.serviceuser/repositories
+
+11. Crear paquete: service-user/./././co.com.cloud.movies.serviceuser/controller
+
+12. Crear paquete: service-user/./././co.com.cloud.movies.serviceuser/services
+
+13. Crear la clase: service-user/./././co.com.cloud.movies.serviceuser/entities/User
+
+14. Crear la interfaz: service-user/./././co.com.cloud.movies.serviceuser/repositories/UserRepository
+
+--Realizamos una pequeña prueba
+
+15. Crear un file: service-user/src/main/resources/data.sql
+
+16. Crear la clase: service-user/src/test/java/co.com.cloud.movies.serviceuser/UserRepositoryMockTest
+
+18. Crear la interfaz: service-user/./././co.com.cloud.movies.serviceuser/services/UserService
+
+19. Crear la clase: service-user/./././co.com.cloud.movies.serviceuser/services/UserServiceImpl
+
+20. Crear la clase: service-user/src/test/java/co.com.cloud.movies.serviceuser/UserApplicationTests
+
+21. Crear la clase: service-user/src/test/java/co.com.cloud.movies.serviceuser/UsertServiceMockTest
+
+22. Crear la clase: service-user/./././co.com.cloud.movies.serviceuser/controller/UserController
+
+-Antes de continuar, probamos una prueba
+
+
+-Pruebas en Postman
+
+28. GET: localhost:8080/product
+
+29. GET: localhost:8080/product/1
+
+30. POST: localhost:8080/product y pasar objeto en el body/raw/JSON
+
+31. DELETE: localhost:8080/product/1
+
+-Agregando algunas validaciones
+
+32. Buscar en Mavel repository: Spring boot starter validation y seleccionar la version 2.3.10
+    Copiar el string de Gradel y colocar la dependencia en build.gradle del microservicio product
+
+33. Crear el paquete: service-product/src/main/test/java/co.com.poli.store.product/utils
+
+34. Crear la clase: service-product/src/main/test/java/co.com.poli.store.product/utils/ErrorMessage
+
+35. Crear la clase: service-product/src/main/test/java/co.com.poli.store.product/utils/Response
+
+36. Crear la clase: service-product/src/main/test/java/co.com.poli.store.product/utils/ResponseBuilder
+
+(Comparar COMMIT enviado a Sebas con la creación de estos servicios).
+** Customer **
+
+37. Crear en start.spring.io como en la imagen que se tiene en Discord.
+   Group: co.com.poli.store
+   Artefacto: customer
+   Type: Gradle
+   Lenguaje: Java
+   Package: Jar
+   Version: 8
+   Dependencias: Spring Boot 2.4.9
+                 -Spring Boot DevTools
+                 -Loombok
+                 -Spring Web
+                 -Spring Data JPA
+                 -H2 Database
+
+    Descomprimirlo y guardarlo donde se genero el proyecto: multiproject_backend/service-customer/customer
+
+38. De service-customer eliminar: .gradle, gradle, HELP.md, .gitignore
+
+39. Modificar el build.gradle del service-customer
+
+40. Configurar multiproject_backend/settings.gradle  y compilarlo
+
+41. Crear paquete: service-customer/./././co.com.poli.store.customer/entities
+
+42. Crear paquete: service-customer/./././co.com.poli.store.customer/repositories
+
+43. Crear paquete: service-customer/./././co.com.poli.store.customer/controller
+
+44. Crear paquete: service-customer/./././co.com.poli.store.customer/services
+
+45. Crear paquete: service-customer/./././co.com.poli.store.customer/utils
+
+46. Crear la clase: service-customer/./././co.com.poli.store.customer/entities/Customer
+
+47. Crear la interfaz: service-customer/./././co.com.poli.store.customer/repositories/CustomerRepository
+
+48. Crear la interfaz: service-customer/./././co.com.poli.store.customer/services/CustomerService
+
+49. Crear la interfaz: service-customer/./././co.com.poli.store.customer/services/CustomerServiceImpl
+
+50. Crear la clase: service-customer/./././co.com.poli.store.customer/controller/CustomerController
+
+51. Crear el paquete: service-customer/src/main/test/java/co.com.poli.store.customer/utils
+
+52. Crear la clase: service-customer/src/main/test/java/co.com.poli.store.customer/utils/ErrorMessage
+
+53. Crear la clase: service-customer/src/main/test/java/co.com.poli.store.customer/utils/Response
+
+54. Crear la clase: service-customer/src/main/test/java/co.com.poli.store.customer/utils/ResponseBuilder
+
+-Pruebas en Postman
+
+55. POST: localhost:8080/customer y pasar objeto en el body/raw/JSON
+
+56. GET: localhost:8080/customer/numberId/123456
+
+
+** Shopping **
+
+57. Crear en start.spring.io como en la imagen que se tiene en Discord.
+   Group: co.com.poli.store
+   Artefacto: shopping
+   Type: Gradle
+   Lenguaje: Java
+   Package: Jar
+   Version: 8
+   Dependencias: Spring Boot 2.4.9
+                 -Spring Boot DevTools
+                 -Loombok
+                 -Spring Web
+                 -Spring Data JPA
+                 -H2 Database
+
+    Descomprimirlo y guardarlo donde se genero el proyecto: multiproject_backend/service-shopping/shopping
+
+58. De service-shopping eliminar: .gradle, gradle, HELP.md, .gitignore
+
+39. Modificar el build.gradle del service-shopping
+
+40. Configurar multiproject_backend/settings.gradle  y compilarlo
+
+41. Crear paquete: service-shopping/./././co.com.poli.store.shopping/entities
+
+42. Crear paquete: service-shopping/./././co.com.poli.store.shopping/repositories
+
+43. Crear paquete: service-shopping/./././co.com.poli.store.shopping/controller
+
+44. Crear paquete: service-shopping/./././co.com.poli.store.shopping/services
+
+45. Crear paquete: service-shopping/./././co.com.poli.store.shopping/utils
+
+46. Crear la clase: service-shopping/./././co.com.poli.store.shopping/entities/Invoice
+
+47. Crear la clase: service-shopping/./././co.com.poli.store.shopping/entities/InvoiceItem
+
+48. Crear la interfaz: service-shopping/./././co.com.poli.store.shopping/repositories/InvoiceRepository
+
+49. Crear la interfaz: service-shopping/./././co.com.poli.store.shopping/repositories/InvoiceItemRepository
+
+50. Crear la interfaz: service-shopping/./././co.com.poli.store.shopping/services/InvoiceService
+
+51. Crear la interfaz: service-shopping/./././co.com.poli.store.shopping/services/InvoiceServiceImpl
+
+52. Crear la clase: service-shopping/./././co.com.poli.store.shopping/controller/InvoiceController
+
+53.
+
+54.
+
+
+50.
+
+51. Crear el paquete: service-shopping/src/main/test/java/co.com.poli.store.shopping/utils
+
+52. Crear la clase: service-shopping/src/main/test/java/co.com.poli.store.shopping/utils/ErrorMessage
+
+53. Crear la clase: service-shopping/src/main/test/java/co.com.poli.store.shopping/utils/Response
+
+54. Crear la clase: service-shopping/src/main/test/java/co.com.poli.store.shopping/utils/ResponseBuilder
+
+-Pruebas en Postman
+
+55. POST: localhost:8080/shopping y pasar objeto en el body/raw/JSON
+
+56. GET: localhost:8080/shopping/numberId/123456
+
+57. DELETE: localhost:8080/product/1
+

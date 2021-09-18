@@ -1,0 +1,9 @@
+rootProject.name = 'services_movies'
+
+include 'service-user'
+include 'service-movie'
+include 'service-showtime'
+include 'service-config'
+include 'service-register'
+include 'untitled'
+include 'service-gateway'
